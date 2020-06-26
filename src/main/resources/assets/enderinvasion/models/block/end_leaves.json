@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/leaves",
+  "textures": {
+    "all": "enderinvasion:block/end_leaves"
+  }
+}

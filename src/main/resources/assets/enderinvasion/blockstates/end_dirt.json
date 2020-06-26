@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "enderinvasion:block/end_dirt"
+      },
+      {
+        "model": "enderinvasion:block/end_dirt",
+        "y": 90
+      },
+      {
+        "model": "enderinvasion:block/end_dirt",
+        "y": 180
+      },
+      {
+        "model": "enderinvasion:block/end_dirt",
+        "y": 270
+      }
+    ]
+  }
+}

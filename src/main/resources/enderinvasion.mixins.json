@@ -4,6 +4,7 @@
   "package": "de.martenschaefer.enderinvasion.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
+    "EnderDragonFightMixin"
   ],
   "client": [
   ],
