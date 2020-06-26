@@ -1,5 +1,16 @@
 {
   "block.enderinvasion.echerite_ore": "Echerite Ore",
   "item.enderinvasion.echerite_ore": "Echerite Ore",
+  "block.enderinvasion.end_grass_block": "End Grass Block",
+  "item.enderinvasion.end_grass_block": "End Grass Block",
+  "block.enderinvasion.end_dirt": "End Dirt",
+  "item.enderinvasion.end_dirt": "End Dirt",
+  "block.enderinvasion.end_stone": "End Stone",
+  "item.enderinvasion.end_stone": "End Stone",
+  "block.enderinvasion.end_log": "End Log",
+  "item.enderinvasion.end_log": "End Log",
+  "block.enderinvasion.end_leaves": "End Leaves",
+  "item.enderinvasion.end_leaves": "End Leaves",
+
   "enderinvasion.start": "The ender invasion has begun ..."
 }
