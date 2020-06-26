@@ -3,16 +3,18 @@ package de.martenschaefer.enderinvasion;
 import de.martenschaefer.enderinvasion.registry.SpreadRecipe;
 import de.martenschaefer.enderinvasion.registry.SpreadRecipeManager;
 import de.martenschaefer.enderinvasion.registry.SpreadableBlocksRegistry;
+import de.martenschaefer.enderinvasion.worldgen.EnderInvasionPlacer;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3i;
 import net.minecraft.world.Difficulty;
+import net.minecraft.world.ServerWorldAccess;
 
 import java.util.Random;
 
-public class SpreadUtil {
+public class EnderInvasionUtil {
 
  public static void spreadTick(ServerWorld world, BlockPos pos, Random random) {
 
@@ -29,7 +31,7 @@ public class SpreadUtil {
 
   for (int i = 0; i < difficulty.getId(); i++) {
 
-   BlockPos blockPos = pos.add(SpreadUtil.randomNearbyBlockPos(difficulty, random));
+   BlockPos blockPos = pos.add(EnderInvasionUtil.randomNearbyBlockPos(difficulty, random));
    spreadTo(difficulty, world, pos, blockPos, random);
   }
  }
@@ -44,6 +46,10 @@ public class SpreadUtil {
 
   BlockState resultBlockState = recipe.convert(blockState);
   return world.setBlockState(to, resultBlockState);
+ }
+ public static void placeEnderInvasionPatch(ServerWorldAccess world, Random random, BlockPos blockPos) {
+
+  EnderInvasionPlacer.generate(world, random, blockPos, 15);
  }
  public static Vec3i randomNearbyBlockPos(Difficulty difficulty, Random random) {
 
