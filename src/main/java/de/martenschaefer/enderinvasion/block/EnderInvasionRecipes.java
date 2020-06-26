@@ -1,11 +1,11 @@
 package de.martenschaefer.enderinvasion.block;
 
 import de.martenschaefer.enderinvasion.EnderInvasionMod;
-import static de.martenschaefer.enderinvasion.recipe.SpreadRecipeManager.addSimpleRecipe;
-import static de.martenschaefer.enderinvasion.recipe.SpreadRecipeManager.addRecipe;
-import static de.martenschaefer.enderinvasion.recipe.SpreadRecipeManager.EASY;
-import static de.martenschaefer.enderinvasion.recipe.SpreadRecipeManager.NORMAL;
-import static de.martenschaefer.enderinvasion.recipe.SpreadRecipeManager.HARD;
+import static de.martenschaefer.enderinvasion.registry.SpreadRecipeManager.addSimpleRecipe;
+import static de.martenschaefer.enderinvasion.registry.SpreadRecipeManager.addRecipe;
+import static de.martenschaefer.enderinvasion.registry.SpreadRecipeManager.EASY;
+import static de.martenschaefer.enderinvasion.registry.SpreadRecipeManager.NORMAL;
+import static de.martenschaefer.enderinvasion.registry.SpreadRecipeManager.HARD;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.LeavesBlock;
 import net.minecraft.block.PillarBlock;

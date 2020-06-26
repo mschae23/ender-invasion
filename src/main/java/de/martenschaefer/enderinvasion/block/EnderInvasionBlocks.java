@@ -1,6 +1,7 @@
 package de.martenschaefer.enderinvasion.block;
 
 import de.martenschaefer.enderinvasion.EnderInvasionMod;
+import de.martenschaefer.enderinvasion.registry.SpreadableBlocksRegistry;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -31,17 +32,18 @@ public class EnderInvasionBlocks {
 
  public static void registerBlocks() {
 
-  register("echerite_ore", ECHERITE_ORE, ItemGroup.MATERIALS);
-  register("end_grass_block", END_GRASS_BLOCK, ItemGroup.BUILDING_BLOCKS);
-  register("end_dirt", END_DIRT, ItemGroup.BUILDING_BLOCKS);
-  register("end_log", END_LOG, ItemGroup.BUILDING_BLOCKS);
-  register("end_leaves", END_LEAVES, ItemGroup.BUILDING_BLOCKS);
-  register("end_stone", END_STONE, ItemGroup.BUILDING_BLOCKS);
+  register("echerite_ore", ECHERITE_ORE, ItemGroup.MATERIALS, false);
+  register("end_grass_block", END_GRASS_BLOCK, ItemGroup.BUILDING_BLOCKS, true);
+  register("end_dirt", END_DIRT, ItemGroup.BUILDING_BLOCKS, true);
+  register("end_log", END_LOG, ItemGroup.BUILDING_BLOCKS, true);
+  register("end_leaves", END_LEAVES, ItemGroup.BUILDING_BLOCKS, true);
+  register("end_stone", END_STONE, ItemGroup.BUILDING_BLOCKS, true);
  }
- private static void register(String id, Block block, ItemGroup group) {
+ private static void register(String id, Block block, ItemGroup group, boolean spreads) {
 
   Registry.register(Registry.BLOCK, new Identifier(EnderInvasionMod.MOD_ID, id), block);
   Registry.register(Registry.ITEM, new Identifier(EnderInvasionMod.MOD_ID, id), new BlockItem(block, new Item.Settings().group(group)));
+  if(spreads) SpreadableBlocksRegistry.SPREADABLE.addBlock(block);
  }
 
 

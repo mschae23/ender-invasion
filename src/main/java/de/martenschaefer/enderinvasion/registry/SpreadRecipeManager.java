@@ -1,4 +1,4 @@
-package de.martenschaefer.enderinvasion.recipe;
+package de.martenschaefer.enderinvasion.registry;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;

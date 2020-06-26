@@ -1,4 +1,4 @@
-package de.martenschaefer.enderinvasion.recipe;
+package de.martenschaefer.enderinvasion.registry;
 
 import java.util.function.Function;
 import java.util.function.Predicate;
