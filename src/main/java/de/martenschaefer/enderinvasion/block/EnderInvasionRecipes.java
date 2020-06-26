@@ -6,6 +6,7 @@ import static de.martenschaefer.enderinvasion.registry.SpreadRecipeManager.addRe
 import static de.martenschaefer.enderinvasion.registry.SpreadRecipeManager.EASY;
 import static de.martenschaefer.enderinvasion.registry.SpreadRecipeManager.NORMAL;
 import static de.martenschaefer.enderinvasion.registry.SpreadRecipeManager.HARD;
+import static de.martenschaefer.enderinvasion.registry.SpreadRecipeManager.PURIFICATION;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.LeavesBlock;
 import net.minecraft.block.PillarBlock;
@@ -31,5 +32,9 @@ public class EnderInvasionRecipes {
 
   HARD.addRecipes(NORMAL);
   addSimpleRecipe(HARD, new Identifier(EnderInvasionMod.MOD_ID, "end_stone"), Blocks.STONE, EnderInvasionBlocks.END_STONE);
+
+  addSimpleRecipe(PURIFICATION, new Identifier(EnderInvasionMod.MOD_ID, "grass_block_purification"), EnderInvasionBlocks.END_GRASS_BLOCK, Blocks.GRASS_BLOCK);
+  addSimpleRecipe(PURIFICATION, new Identifier(EnderInvasionMod.MOD_ID, "dirt_purification"), EnderInvasionBlocks.END_DIRT, Blocks.DIRT);
+  addSimpleRecipe(PURIFICATION, new Identifier(EnderInvasionMod.MOD_ID, "grass_block_purification"), EnderInvasionBlocks.END_STONE, Blocks.STONE);
  }
 }

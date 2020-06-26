@@ -23,13 +23,18 @@ public class AbstractBlockStateMixin {
   if(world.getDimension() != DimensionType.getOverworldDimensionType()) return;
   if(world.isClient()) return;
 
-  if(EnderInvasionMod.STATE.get(world.getLevelProperties()).value() == State.ENDER_INVASION) {
+  switch(EnderInvasionMod.STATE.get(world.getLevelProperties()).value()) {
 
-   if(random.nextInt(5120) == 1)  {
+   case ENDER_INVASION:
+    if(random.nextInt(5120) == 1)  {
 
     EnderInvasionUtil.placeEnderInvasionPatch(world, random, pos);
-   }
-   EnderInvasionUtil.spreadTick(world, pos, random);
+    }
+    EnderInvasionUtil.spreadTick(world, pos, random);
+    break;
+   case POST_ENDER_DRAGON:
+    EnderInvasionUtil.purify(world, pos, random);
+    break;
   }
  }
 }

@@ -19,7 +19,6 @@ public class EnderInvasionUtil {
  public static void spreadTick(ServerWorld world, BlockPos pos, Random random) {
 
   if(!SpreadableBlocksRegistry.SPREADABLE.test(world.getBlockState(pos).getBlock())) return;
-  if(EnderInvasionMod.STATE.get(world.getLevelProperties()).value() != State.ENDER_INVASION) return;
 
   /* if (!canSurvive(state, world, pos)) {
 
@@ -50,6 +49,13 @@ public class EnderInvasionUtil {
  public static void placeEnderInvasionPatch(ServerWorldAccess world, Random random, BlockPos blockPos) {
 
   EnderInvasionPlacer.generate(world, random, blockPos, 15);
+ }
+ public static void purify(ServerWorld world, BlockPos pos, Random random) {
+
+  if(SpreadRecipeManager.PURIFICATION.getRecipe(world.getBlockState(pos).getBlock()) == null) return;
+
+  SpreadRecipe recipe = SpreadRecipeManager.PURIFICATION.getRecipe(world.getBlockState(pos).getBlock());
+  world.setBlockState(pos, recipe.convert(world.getBlockState(pos)));
  }
  public static Vec3i randomNearbyBlockPos(Difficulty difficulty, Random random) {
 
