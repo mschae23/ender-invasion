@@ -41,18 +41,18 @@ public class EnderInvasionMod implements ModInitializer {
 
   if(biome.getCategory() == Biome.Category.NETHER) {
    biome.addFeature(
-           GenerationStep.Feature.UNDERGROUND_ORES,
+           GenerationStep.Feature.UNDERGROUND_DECORATION,
            Feature.ORE.configure(
                    new OreFeatureConfig(
                            OreFeatureConfig.Target.NETHERRACK,
                            EnderInvasionBlocks.ECHERITE_ORE.getDefaultState(),
-                           2 //Ore vein size
+                           4 //Ore vein size
                    )).createDecoratedFeature(
                    Decorator.COUNT_RANGE.configure(new RangeDecoratorConfig(
-                           8, //Number of veins per chunk
+                           10, //Number of veins per chunk
                            0, //Bottom Offset
-                           0, //Min y level
-                           128 //Max y level
+                           3, //Min y level
+                           125 //Max y level
                    ))));
   }
  }
