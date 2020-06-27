@@ -10,6 +10,7 @@ import net.minecraft.block.LeavesBlock;
 import net.minecraft.block.Material;
 import net.minecraft.block.MaterialColor;
 import net.minecraft.block.PillarBlock;
+import net.minecraft.block.SnowyBlock;
 import net.minecraft.entity.EntityType;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -23,12 +24,12 @@ import net.minecraft.world.BlockView;
 
 public class EnderInvasionBlocks {
 
- public static EcheriteOreBlock ECHERITE_ORE = new EcheriteOreBlock(AbstractBlock.Settings.of(Material.STONE, MaterialColor.NETHER).requiresTool().strength(10.0F, 10.0F).sounds(BlockSoundGroup.ANCIENT_DEBRIS));
- public static GrassBlock END_GRASS_BLOCK = new GrassBlock(AbstractBlock.Settings.of(Material.SOLID_ORGANIC).ticksRandomly().strength(0.6F).sounds(BlockSoundGroup.GRASS));
- public static Block END_DIRT = new Block(AbstractBlock.Settings.of(Material.SOIL, MaterialColor.DIRT).strength(0.5F).sounds(BlockSoundGroup.GRAVEL));
+ public static EcheriteOreBlock ECHERITE_ORE = new EcheriteOreBlock(AbstractBlock.Settings.of(Material.STONE, MaterialColor.NETHER).ticksRandomly().requiresTool().strength(10.0F, 10.0F).sounds(BlockSoundGroup.ANCIENT_DEBRIS));
+ public static SnowyBlock END_GRASS_BLOCK = new SnowyBlock(AbstractBlock.Settings.of(Material.SOLID_ORGANIC).ticksRandomly().strength(0.6F).sounds(BlockSoundGroup.GRASS));
+ public static Block END_DIRT = new Block(AbstractBlock.Settings.of(Material.SOIL, MaterialColor.DIRT).ticksRandomly().strength(0.5F).sounds(BlockSoundGroup.GRAVEL));
  public static PillarBlock END_LOG = createLogBlock(MaterialColor.WOOD, MaterialColor.SPRUCE);
  public static LeavesBlock END_LEAVES = createLeavesBlock();
- public static Block END_STONE = new Block(AbstractBlock.Settings.of(Material.STONE, MaterialColor.STONE).requiresTool().strength(1.5F, 6.0F));
+ public static Block END_STONE = new Block(AbstractBlock.Settings.of(Material.STONE, MaterialColor.STONE).ticksRandomly().requiresTool().strength(1.5F, 6.0F));
 
  public static void registerBlocks() {
 
@@ -50,7 +51,7 @@ public class EnderInvasionBlocks {
  private static PillarBlock createLogBlock(MaterialColor topMaterialColor, MaterialColor sideMaterialColor) {
   return new PillarBlock(AbstractBlock.Settings.of(Material.WOOD, (blockState) -> {
    return blockState.get(PillarBlock.AXIS) == Direction.Axis.Y ? topMaterialColor : sideMaterialColor;
-  }).strength(2.0F).sounds(BlockSoundGroup.WOOD));
+  }).ticksRandomly().strength(2.0F).sounds(BlockSoundGroup.WOOD));
  }
  private static LeavesBlock createLeavesBlock() {
   return new LeavesBlock(AbstractBlock.Settings.of(Material.LEAVES).strength(0.2F).ticksRandomly().sounds(BlockSoundGroup.GRASS).nonOpaque().allowsSpawning(EnderInvasionBlocks::canSpawnOnLeaves).suffocates(EnderInvasionBlocks::never).blockVision(EnderInvasionBlocks::never));

@@ -16,9 +16,9 @@ import java.util.Random;
 
 public class EnderInvasionUtil {
 
- public static void spreadTick(ServerWorld world, BlockPos pos, Random random) {
+ public static void spreadTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
 
-  if(!SpreadableBlocksRegistry.SPREADABLE.test(world.getBlockState(pos).getBlock())) return;
+  if(!SpreadableBlocksRegistry.SPREADABLE.test(state.getBlock())) return;
 
   /* if (!canSurvive(state, world, pos)) {
 
@@ -31,10 +31,10 @@ public class EnderInvasionUtil {
   for (int i = 0; i < difficulty.getId(); i++) {
 
    BlockPos blockPos = pos.add(EnderInvasionUtil.randomNearbyBlockPos(difficulty, random));
-   spreadTo(difficulty, world, pos, blockPos, random);
+   spreadTo(difficulty, world, blockPos, random);
   }
  }
- public static boolean spreadTo(Difficulty difficulty, ServerWorld world, BlockPos from, BlockPos to, Random random) {
+ public static boolean spreadTo(Difficulty difficulty, ServerWorld world, BlockPos to, Random random) {
 
   BlockState blockState = world.getBlockState(to);
   Block block = blockState.getBlock();
@@ -50,12 +50,12 @@ public class EnderInvasionUtil {
 
   EnderInvasionPlacer.generate(world, random, blockPos, 15);
  }
- public static void purify(ServerWorld world, BlockPos pos, Random random) {
+ public static void purify(BlockState state, ServerWorld world, BlockPos pos, Random random) {
 
-  if(SpreadRecipeManager.PURIFICATION.getRecipe(world.getBlockState(pos).getBlock()) == null) return;
+  if(SpreadRecipeManager.PURIFICATION.getRecipe(state.getBlock()) == null) return;
 
-  SpreadRecipe recipe = SpreadRecipeManager.PURIFICATION.getRecipe(world.getBlockState(pos).getBlock());
-  world.setBlockState(pos, recipe.convert(world.getBlockState(pos)));
+  SpreadRecipe recipe = SpreadRecipeManager.PURIFICATION.getRecipe(state.getBlock());
+  world.setBlockState(pos, recipe.convert(state));
  }
  public static Vec3i randomNearbyBlockPos(Difficulty difficulty, Random random) {
 

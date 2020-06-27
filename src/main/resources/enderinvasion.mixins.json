@@ -5,7 +5,7 @@
   "compatibilityLevel": "JAVA_8",
   "mixins": [
     "EnderDragonFightMixin",
-    "AbstractBlockStateMixin"
+    "AbstractBlockMixin"
   ],
   "client": [
   ],
