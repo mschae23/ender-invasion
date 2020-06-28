@@ -11,12 +11,32 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3i;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.ServerWorldAccess;
+import net.minecraft.world.dimension.DimensionType;
 
 import java.util.Random;
 
 public class EnderInvasionUtil {
 
- public static void spreadTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
+ public static void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
+
+  if(world.getDimension() != DimensionType.getOverworldDimensionType()) return;
+  if(world.isClient()) return;
+
+  switch(EnderInvasionMod.STATE.get(world.getLevelProperties()).value()) {
+
+   case ENDER_INVASION:
+    if(random.nextInt(5120) == 1)  {
+
+     EnderInvasionUtil.placeEnderInvasionPatch(world, random, pos);
+    }
+    EnderInvasionUtil.randomTick(state, world, pos, random);
+    break;
+   case POST_ENDER_DRAGON:
+    EnderInvasionUtil.purify(state, world, pos, random);
+    break;
+  }
+ }
+ public static void spread(BlockState state, ServerWorld world, BlockPos pos, Random random) {
 
   if(!SpreadableBlocksRegistry.SPREADABLE.test(state.getBlock())) return;
 
@@ -30,7 +50,7 @@ public class EnderInvasionUtil {
 
   for (int i = 0; i < difficulty.getId(); i++) {
 
-   BlockPos blockPos = pos.add(EnderInvasionUtil.randomNearbyBlockPos(difficulty, random));
+   BlockPos blockPos = pos.add(randomNearbyBlockPos(difficulty, random));
    spreadTo(difficulty, world, blockPos, random);
   }
  }

@@ -33,6 +33,5 @@
     "minecraft": "1.16.x"
   },
   "suggests": {
-  },
-  "accessWidener": "enderinvasion.accesswidener"
+  }
 }

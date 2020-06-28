@@ -31,6 +31,7 @@ public class EnderInvasionRecipes {
   addSimpleRecipe(NORMAL, new Identifier(EnderInvasionMod.MOD_ID, "end_grass_block_from_podzol"), Blocks.PODZOL, EnderInvasionBlocks.END_GRASS_BLOCK);
 
   HARD.addRecipes(NORMAL);
+  addSimpleRecipe(HARD, new Identifier(EnderInvasionMod.MOD_ID, "end_grass_block_from_mycelium"), Blocks.MYCELIUM, EnderInvasionBlocks.END_GRASS_BLOCK);
   addSimpleRecipe(HARD, new Identifier(EnderInvasionMod.MOD_ID, "end_stone"), Blocks.STONE, EnderInvasionBlocks.END_STONE);
 
   addSimpleRecipe(PURIFICATION, new Identifier(EnderInvasionMod.MOD_ID, "grass_block_purification"), EnderInvasionBlocks.END_GRASS_BLOCK, Blocks.GRASS_BLOCK);
