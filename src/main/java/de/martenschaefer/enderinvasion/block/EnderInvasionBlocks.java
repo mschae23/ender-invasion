@@ -5,12 +5,9 @@ import de.martenschaefer.enderinvasion.registry.SpreadableBlocksRegistry;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.GrassBlock;
-import net.minecraft.block.LeavesBlock;
 import net.minecraft.block.Material;
 import net.minecraft.block.MaterialColor;
 import net.minecraft.block.PillarBlock;
-import net.minecraft.block.SnowyBlock;
 import net.minecraft.entity.EntityType;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -25,7 +22,7 @@ import net.minecraft.world.BlockView;
 public class EnderInvasionBlocks {
 
  public static EcheriteOreBlock ECHERITE_ORE = new EcheriteOreBlock(AbstractBlock.Settings.of(Material.STONE, MaterialColor.NETHER).ticksRandomly().requiresTool().strength(10.0F, 10.0F).sounds(BlockSoundGroup.ANCIENT_DEBRIS));
- public static EnderInvasionBlock END_GRASS_BLOCK = new EnderInvasionBlock(AbstractBlock.Settings.of(Material.SOLID_ORGANIC).ticksRandomly().strength(0.6F).sounds(BlockSoundGroup.GRASS));
+ public static EnderInvasionGrassBlock END_GRASS_BLOCK = new EnderInvasionGrassBlock(AbstractBlock.Settings.of(Material.SOLID_ORGANIC).ticksRandomly().strength(0.6F).sounds(BlockSoundGroup.GRASS));
  public static EnderInvasionBlock END_DIRT = new EnderInvasionBlock(AbstractBlock.Settings.of(Material.SOIL, MaterialColor.DIRT).ticksRandomly().strength(0.5F).sounds(BlockSoundGroup.GRAVEL));
  public static EnderInvasionPillarBlock END_LOG = createLogBlock(MaterialColor.WOOD, MaterialColor.SPRUCE);
  public static EnderInvasionLeavesBlock END_LEAVES = createLeavesBlock();
