@@ -39,7 +39,7 @@ public class EnderInvasionUtil {
 
   if(EnderInvasionMod.STATE.get(world.getLevelProperties()).value() == State.ENDER_INVASION) {
 
-   if(random.nextInt(5120) == 1)  {
+   if(random.nextInt(4096) == 1)  {
 
     EnderInvasionUtil.placeEnderInvasionPatch(world, random, pos);
    }
