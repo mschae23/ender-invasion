@@ -4,7 +4,6 @@ import de.martenschaefer.enderinvasion.EnderInvasionMod;
 import de.martenschaefer.enderinvasion.EnderInvasionUtil;
 import de.martenschaefer.enderinvasion.State;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
 import net.minecraft.block.OreBlock;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -14,8 +13,6 @@ import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraft.world.WorldAccess;
-
 import java.util.Random;
 
 public class EcheriteOreBlock extends OreBlock {
@@ -42,6 +39,6 @@ public class EcheriteOreBlock extends OreBlock {
  @Override
  public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
 
-  EnderInvasionUtil.randomTick(state, world, pos, random);
+  EnderInvasionUtil.spreadTick(state, world, pos, random);
  }
 }

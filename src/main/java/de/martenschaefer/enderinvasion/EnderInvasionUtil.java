@@ -17,7 +17,7 @@ import java.util.Random;
 
 public class EnderInvasionUtil {
 
- public static void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
+ public static void spreadTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
 
   if(world.getDimension() != DimensionType.getOverworldDimensionType()) return;
   if(world.isClient()) return;
@@ -25,15 +25,24 @@ public class EnderInvasionUtil {
   switch(EnderInvasionMod.STATE.get(world.getLevelProperties()).value()) {
 
    case ENDER_INVASION:
-    if(random.nextInt(5120) == 1)  {
-
-     EnderInvasionUtil.placeEnderInvasionPatch(world, random, pos);
-    }
-    EnderInvasionUtil.randomTick(state, world, pos, random);
+    EnderInvasionUtil.spread(state, world, pos, random);
     break;
    case POST_ENDER_DRAGON:
     EnderInvasionUtil.purify(state, world, pos, random);
     break;
+  }
+ }
+ public static void infectTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
+
+  if(world.getDimension() != DimensionType.getOverworldDimensionType()) return;
+  if(world.isClient()) return;
+
+  if(EnderInvasionMod.STATE.get(world.getLevelProperties()).value() == State.ENDER_INVASION) {
+
+   if(random.nextInt(5120) == 1)  {
+
+    EnderInvasionUtil.placeEnderInvasionPatch(world, random, pos);
+   }
   }
  }
  public static void spread(BlockState state, ServerWorld world, BlockPos pos, Random random) {

@@ -17,6 +17,6 @@ public class EnderInvasionBlock extends Block {
  @Override
  public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
 
-  EnderInvasionUtil.randomTick(state, world, pos, random);
+  EnderInvasionUtil.spreadTick(state, world, pos, random);
  }
 }
