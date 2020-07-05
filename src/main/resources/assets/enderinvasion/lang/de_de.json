@@ -1,16 +1,10 @@
 {
-  "block.enderinvasion.echerite_ore": "Echeriterz",
-  "item.enderinvasion.echerite_ore": "Echeriterz",
-  "block.enderinvasion.end_grass_block": "Endgrasblock",
-  "item.enderinvasion.end_grass_block": "Endgrasblock",
-  "block.enderinvasion.end_dirt": "Enderde",
-  "item.enderinvasion.end_dirt": "Enderde",
-  "block.enderinvasion.end_stone": "Endstein",
-  "item.enderinvasion.end_stone": "Endstein",
-  "block.enderinvasion.end_log": "Endstamm",
-  "item.enderinvasion.end_log": "Endstamm",
-  "block.enderinvasion.end_leaves": "Endlaub",
-  "item.enderinvasion.end_leaves": "Endlaub",
+  "block.enderinvasion.echerite_ore": "Echeriterz"
+  "block.enderinvasion.end_grass_block": "Endgrasblock"
+  "block.enderinvasion.end_dirt": "Enderde"
+  "block.enderinvasion.end_stone": "Endstein"
+  "block.enderinvasion.end_log": "Endstamm"
+  "block.enderinvasion.end_leaves": "Endlaub"
 
   "enderinvasion.start": "Die Ender-Invasion hat begonnen ..."
 }
