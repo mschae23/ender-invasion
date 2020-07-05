@@ -31,21 +31,6 @@ public class EnderInvasionUtil {
     break;
   }
  }
- public static void spreadTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-
-  if(world.getDimension() != DimensionType.getOverworldDimensionType()) return;
-  if(world.isClient()) return;
-
-  switch(EnderInvasionMod.STATE.get(world.getLevelProperties()).value()) {
-
-   case ENDER_INVASION:
-    EnderInvasionUtil.spread(state, world, pos, random);
-    break;
-   case POST_ENDER_DRAGON:
-    EnderInvasionUtil.purify(state, world, pos, random);
-    break;
-  }
- }
  public static void infect(@SuppressWarnings("unused") BlockState state, ServerWorld world, BlockPos pos, Random random) {
 
   if(random.nextInt(16384) == 1)  {

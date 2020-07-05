@@ -3,14 +3,14 @@ package de.martenschaefer.enderinvasion.worldgen;
 import de.martenschaefer.enderinvasion.registry.SpreadRecipeManager;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.world.World;
+import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.WorldAccess;
 import java.util.BitSet;
 import java.util.Random;
 
 public class EnderInvasionPlacer {
 
- public static boolean generate(World world, Random random, BlockPos blockPos, int patchSize) {
+ public static boolean generate(ServerWorldAccess worldAccess, Random random, BlockPos blockPos, int patchSize) {
   float f = random.nextFloat() * 3.1415927F;
   float g = (float)patchSize / 8.0F;
   int i = MathHelper.ceil(((float)patchSize / 16.0F * 2.0F + 1.0F) / 2.0F);
@@ -28,14 +28,14 @@ public class EnderInvasionPlacer {
 
   for(int s = n; s <= n + q; ++s) {
    for(int t = p; t <= p + q; ++t) {
-    return generateVeinPart(world, random, patchSize, d, e, h, j, l, m, n, o, p, q, r);
+    return generateVeinPart(worldAccess, random, patchSize, d, e, h, j, l, m, n, o, p, q, r);
    }
   }
 
   return false;
  }
 
- protected static boolean generateVeinPart(WorldAccess world, Random random, int patchSize, double startX, double endX, double startZ, double endZ, double startY, double endY, int x, int y, int z, int size, int i) {
+ protected static boolean generateVeinPart(WorldAccess worldAccess, Random random, int patchSize, double startX, double endX, double startZ, double endZ, double startY, double endY, int x, int y, int z, int size, int i) {
   int j = 0;
   BitSet bitSet = new BitSet(size * i * size);
   BlockPos.Mutable mutable = new BlockPos.Mutable();
@@ -105,8 +105,8 @@ public class EnderInvasionPlacer {
           if (!bitSet.get(am)) {
            bitSet.set(am);
            mutable.set(ag, ai, ak);
-           if (SpreadRecipeManager.NORMAL.getRecipe(world.getBlockState(mutable).getBlock()) != null) {
-            world.setBlockState(mutable, SpreadRecipeManager.NORMAL.getRecipe(world.getBlockState(mutable).getBlock()).convert(world.getBlockState(mutable)), 2);
+           if (SpreadRecipeManager.NORMAL.getRecipe(worldAccess.getBlockState(mutable).getBlock()) != null) {
+            worldAccess.setBlockState(mutable, SpreadRecipeManager.NORMAL.getRecipe(worldAccess.getBlockState(mutable).getBlock()).convert(worldAccess.getBlockState(mutable)), 2);
             ++j;
            }
           }
