@@ -44,7 +44,7 @@ public class SpreadRecipeManager {
 	}
 	public static void addSimpleRecipe(SpreadRecipeManager manager, Identifier identifier, Block input, Block result) {
 
-		addRecipe(manager, identifier, block -> block == input, state -> result.getDefaultState());
+		addRecipe(manager, identifier, block -> block.equals(input), state -> result.getDefaultState());
 	}
 	public static void addRecipe(SpreadRecipeManager manager, Identifier identifier, Predicate<Block> isValidBlock, Function<BlockState, BlockState> convert) {
 

@@ -17,7 +17,7 @@ public class SpreadableBlocksRegistry {
  }
  public void addBlock(Block block) {
 
-  this.blocks.add((test -> block == test));
+  this.blocks.add((test -> test.equals(block)));
  }
  public void addBlock(Predicate<Block> predicate) {
 

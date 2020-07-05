@@ -10,13 +10,27 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3i;
 import net.minecraft.world.Difficulty;
-import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.dimension.DimensionType;
-
 import java.util.Random;
 
 public class EnderInvasionUtil {
 
+ public static void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
+
+  if(world.getDimension() != DimensionType.getOverworldDimensionType()) return;
+  if(world.isClient()) return;
+
+  switch(EnderInvasionMod.STATE.get(world.getLevelProperties()).value()) {
+
+   case ENDER_INVASION:
+    EnderInvasionUtil.infect(state, world, pos, random);
+    EnderInvasionUtil.spread(state, world, pos, random);
+    break;
+   case POST_ENDER_DRAGON:
+    EnderInvasionUtil.purify(state, world, pos, random);
+    break;
+  }
+ }
  public static void spreadTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
 
   if(world.getDimension() != DimensionType.getOverworldDimensionType()) return;
@@ -32,17 +46,11 @@ public class EnderInvasionUtil {
     break;
   }
  }
- public static void infectTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
+ public static void infect(@SuppressWarnings("unused") BlockState state, ServerWorld world, BlockPos pos, Random random) {
 
-  if(world.getDimension() != DimensionType.getOverworldDimensionType()) return;
-  if(world.isClient()) return;
-
-  if(EnderInvasionMod.STATE.get(world.getLevelProperties()).value() == State.ENDER_INVASION) {
-
-   if(random.nextInt(4096) == 1)  {
+  if(random.nextInt(16384) == 1)  {
 
     EnderInvasionUtil.placeEnderInvasionPatch(world, random, pos);
-   }
   }
  }
  public static void spread(BlockState state, ServerWorld world, BlockPos pos, Random random) {
@@ -63,23 +71,23 @@ public class EnderInvasionUtil {
    spreadTo(difficulty, world, blockPos, random);
   }
  }
- public static boolean spreadTo(Difficulty difficulty, ServerWorld world, BlockPos to, Random random) {
+ public static void spreadTo(Difficulty difficulty, ServerWorld world, BlockPos to, @SuppressWarnings("unused") Random random) {
 
   BlockState blockState = world.getBlockState(to);
   Block block = blockState.getBlock();
 
   SpreadRecipe recipe = getRecipeForBlock(difficulty, block);
 
-  if(recipe == null) return false;
+  if(recipe == null) return;
 
   BlockState resultBlockState = recipe.convert(blockState);
-  return world.setBlockState(to, resultBlockState);
+  world.setBlockState(to, resultBlockState);
  }
- public static void placeEnderInvasionPatch(ServerWorldAccess world, Random random, BlockPos blockPos) {
+ public static void placeEnderInvasionPatch(ServerWorld world, Random random, BlockPos blockPos) {
 
-  EnderInvasionPlacer.generate(world, random, blockPos, 15);
+  EnderInvasionPlacer.generate(world, random, blockPos, 30);
  }
- public static void purify(BlockState state, ServerWorld world, BlockPos pos, Random random) {
+ public static void purify(BlockState state, ServerWorld world, BlockPos pos, @SuppressWarnings("unused") Random random) {
 
   if(SpreadRecipeManager.PURIFICATION.getRecipe(state.getBlock()) == null) return;
 

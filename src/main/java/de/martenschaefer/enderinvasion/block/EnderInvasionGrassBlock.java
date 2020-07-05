@@ -1,6 +1,5 @@
 package de.martenschaefer.enderinvasion.block;
 
-import de.martenschaefer.enderinvasion.EnderInvasionUtil;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.GrassBlock;
 import net.minecraft.server.world.ServerWorld;
@@ -16,6 +15,6 @@ public class EnderInvasionGrassBlock extends GrassBlock {
  @Override
  public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
 
-  EnderInvasionUtil.spreadTick(state, world, pos, random);
+
  }
 }

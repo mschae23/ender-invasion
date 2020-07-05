@@ -4,9 +4,8 @@
   "package": "de.martenschaefer.enderinvasion.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-    "AbstractBlockMixin",
     "EnderDragonFightMixin",
-    "SpreadableBlockMixin"
+    "ServerWorldMixin"
   ],
   "client": [
   ],

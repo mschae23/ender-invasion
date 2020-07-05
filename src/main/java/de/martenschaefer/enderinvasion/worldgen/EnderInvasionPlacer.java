@@ -3,16 +3,14 @@ package de.martenschaefer.enderinvasion.worldgen;
 import de.martenschaefer.enderinvasion.registry.SpreadRecipeManager;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.world.Heightmap;
-import net.minecraft.world.ServerWorldAccess;
+import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
-
 import java.util.BitSet;
 import java.util.Random;
 
 public class EnderInvasionPlacer {
 
- public static boolean generate(ServerWorldAccess serverWorldAccess, Random random, BlockPos blockPos, int patchSize) {
+ public static boolean generate(World world, Random random, BlockPos blockPos, int patchSize) {
   float f = random.nextFloat() * 3.1415927F;
   float g = (float)patchSize / 8.0F;
   int i = MathHelper.ceil(((float)patchSize / 16.0F * 2.0F + 1.0F) / 2.0F);
@@ -30,7 +28,7 @@ public class EnderInvasionPlacer {
 
   for(int s = n; s <= n + q; ++s) {
    for(int t = p; t <= p + q; ++t) {
-    return generateVeinPart(serverWorldAccess, random, patchSize, d, e, h, j, l, m, n, o, p, q, r);
+    return generateVeinPart(world, random, patchSize, d, e, h, j, l, m, n, o, p, q, r);
    }
   }
 
