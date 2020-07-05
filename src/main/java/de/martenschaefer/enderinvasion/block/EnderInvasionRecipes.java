@@ -29,13 +29,15 @@ public class EnderInvasionRecipes {
 
   NORMAL.addRecipes(EASY);
   addSimpleRecipe(NORMAL, new Identifier(EnderInvasionMod.MOD_ID, "end_grass_block_from_podzol"), Blocks.PODZOL, EnderInvasionBlocks.END_GRASS_BLOCK);
+  // addSimpleRecipe(NORMAL, new Identifier(EnderInvasionMod.MOD_ID, "end_sand", Blocks.SAND, EnderInvasionBlocks.END_SAND);
 
   HARD.addRecipes(NORMAL);
   addSimpleRecipe(HARD, new Identifier(EnderInvasionMod.MOD_ID, "end_grass_block_from_mycelium"), Blocks.MYCELIUM, EnderInvasionBlocks.END_GRASS_BLOCK);
   addSimpleRecipe(HARD, new Identifier(EnderInvasionMod.MOD_ID, "end_stone"), Blocks.STONE, EnderInvasionBlocks.END_STONE);
+  // addSimpleRecipe(HARD, new Identifier(EnderInvasionMod.MOD_ID, "end_sandstone"), Blocks.SANDSTONE, EnderInvasionBlocks.END_SANDSTONE);
 
   addSimpleRecipe(PURIFICATION, new Identifier(EnderInvasionMod.MOD_ID, "grass_block_purification"), EnderInvasionBlocks.END_GRASS_BLOCK, Blocks.GRASS_BLOCK);
   addSimpleRecipe(PURIFICATION, new Identifier(EnderInvasionMod.MOD_ID, "dirt_purification"), EnderInvasionBlocks.END_DIRT, Blocks.DIRT);
-  addSimpleRecipe(PURIFICATION, new Identifier(EnderInvasionMod.MOD_ID, "grass_block_purification"), EnderInvasionBlocks.END_STONE, Blocks.STONE);
+  addSimpleRecipe(PURIFICATION, new Identifier(EnderInvasionMod.MOD_ID, "stone_purification"), EnderInvasionBlocks.END_STONE, Blocks.STONE);
  }
 }
