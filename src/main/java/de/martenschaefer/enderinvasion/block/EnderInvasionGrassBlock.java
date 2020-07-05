@@ -15,6 +15,6 @@ public class EnderInvasionGrassBlock extends GrassBlock {
  @Override
  public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
 
-
+  // Remove SpreadableBlock randomTick logic
  }
 }

@@ -28,9 +28,7 @@ public class EcheriteOreBlock extends OreBlock {
    EnderInvasionMod.STATE.get(world.getLevelProperties()).setValue(State.ENDER_INVASION);
 
    // Send chat message
-   world.getPlayers().forEach(p -> {
-    player.sendMessage(new TranslatableText("enderinvasion.start").formatted(Formatting.DARK_GREEN), false);
-   });
+   world.getPlayers().forEach(p -> player.sendMessage(new TranslatableText("enderinvasion.start").formatted(Formatting.DARK_GREEN), false));
   }
  }
 }
