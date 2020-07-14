@@ -7,9 +7,12 @@ import de.martenschaefer.enderinvasion.worldgen.EnderInvasionPlacer;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.tag.FluidTags;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3i;
 import net.minecraft.world.Difficulty;
+import net.minecraft.world.WorldView;
 import net.minecraft.world.dimension.DimensionType;
 import java.util.Random;
 
@@ -42,12 +45,13 @@ public class EnderInvasionUtil {
 
   if(!SpreadableBlocksRegistry.SPREADABLE.test(state.getBlock())) return;
 
-  /* if (!canSurvive(state, world, pos)) {
+  if (!EnderInvasionUtil.canSurvive(world, state, pos)) {
 
-   world.setBlockState(pos, getSurviveBlock().getDefaultState());
+   SpreadRecipe recipe = SpreadRecipeManager.WATER_PURIFICATION.getRecipe(state.getBlock());
+   if(recipe == null) return;
+   world.setBlockState(pos, recipe.convert(state));
    return;
-  } */
-
+  }
   Difficulty difficulty = world.getDifficulty();
 
   for (int i = 0; i < difficulty.getId(); i++) {
@@ -67,6 +71,19 @@ public class EnderInvasionUtil {
 
   BlockState resultBlockState = recipe.convert(blockState);
   world.setBlockState(to, resultBlockState);
+ }
+ public static boolean canSurvive(WorldView world, BlockState state, BlockPos pos) {
+
+  BlockPos posUp = pos.up();
+  BlockState stateUp = world.getBlockState(posUp);
+  if(!world.getFluidState(posUp).isIn(FluidTags.WATER) && !stateUp.isOpaque()) return true;
+
+  for(Direction direction: Direction.values()) {
+
+   BlockPos pos2 = pos.add(direction.getVector());
+   if(world.getFluidState(pos2).isIn(FluidTags.WATER)) return false;
+  }
+  return true;
  }
  public static void placeEnderInvasionPatch(ServerWorld world, Random random, BlockPos blockPos) {
 

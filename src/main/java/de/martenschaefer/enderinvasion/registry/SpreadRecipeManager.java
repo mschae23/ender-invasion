@@ -15,6 +15,7 @@ public class SpreadRecipeManager {
 	public static final SpreadRecipeManager NORMAL = new SpreadRecipeManager();
 	public static final SpreadRecipeManager HARD = new SpreadRecipeManager();
 	public static final SpreadRecipeManager PURIFICATION = new SpreadRecipeManager();
+	public static final SpreadRecipeManager WATER_PURIFICATION = new SpreadRecipeManager();
 	
 	private final HashMap<Identifier, SpreadRecipe> recipes;
 	
