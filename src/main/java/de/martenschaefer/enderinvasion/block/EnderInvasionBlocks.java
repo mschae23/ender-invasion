@@ -2,6 +2,9 @@ package de.martenschaefer.enderinvasion.block;
 
 import de.martenschaefer.enderinvasion.EnderInvasionMod;
 import de.martenschaefer.enderinvasion.registry.SpreadableBlocksRegistry;
+import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.fabricmc.fabric.api.object.builder.v1.block.FabricMaterialBuilder;
+import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -22,9 +25,9 @@ import net.minecraft.world.BlockView;
 
 public class EnderInvasionBlocks {
 
- public static EcheriteOreBlock ECHERITE_ORE = new EcheriteOreBlock(AbstractBlock.Settings.of(Material.STONE, MaterialColor.NETHER).ticksRandomly().requiresTool().strength(10.0F, 10.0F).sounds(BlockSoundGroup.ANCIENT_DEBRIS));
+ public static EcheriteOreBlock ECHERITE_ORE = new EcheriteOreBlock(FabricBlockSettings.of(new FabricMaterialBuilder(MaterialColor.NETHER).build(), MaterialColor.STONE).breakByTool(FabricToolTags.PICKAXES, 4).requiresTool().strength(30.0F, 3.0F).sounds(BlockSoundGroup.ANCIENT_DEBRIS));
  public static EnderInvasionGrassBlock END_GRASS_BLOCK = new EnderInvasionGrassBlock(AbstractBlock.Settings.of(Material.SOLID_ORGANIC).ticksRandomly().strength(0.6F).sounds(BlockSoundGroup.GRASS));
- public static Block END_DIRT = new Block(AbstractBlock.Settings.of(Material.SOIL, MaterialColor.DIRT).ticksRandomly().strength(0.5F).sounds(BlockSoundGroup.GRAVEL));
+ public static Block END_DIRT = new Block(AbstractBlock.Settings.of(Material.SOIL, MaterialColor.DIRT).strength(0.5F).sounds(BlockSoundGroup.GRAVEL));
  public static PillarBlock END_LOG = createLogBlock(MaterialColor.WOOD, MaterialColor.PURPLE);
  public static LeavesBlock END_LEAVES = createLeavesBlock();
 
@@ -47,10 +50,10 @@ public class EnderInvasionBlocks {
  private static PillarBlock createLogBlock(MaterialColor topMaterialColor, MaterialColor sideMaterialColor) {
   return new PillarBlock(AbstractBlock.Settings.of(Material.WOOD, (blockState) -> {
    return blockState.get(PillarBlock.AXIS) == Direction.Axis.Y ? topMaterialColor : sideMaterialColor;
-  }).ticksRandomly().strength(2.0F).sounds(BlockSoundGroup.WOOD));
+  }).strength(2.0F).sounds(BlockSoundGroup.WOOD));
  }
  private static LeavesBlock createLeavesBlock() {
-  return new LeavesBlock(AbstractBlock.Settings.of(Material.LEAVES).strength(0.2F).ticksRandomly().sounds(BlockSoundGroup.GRASS).nonOpaque().allowsSpawning(EnderInvasionBlocks::canSpawnOnLeaves).suffocates(EnderInvasionBlocks::never).blockVision(EnderInvasionBlocks::never));
+  return new LeavesBlock(AbstractBlock.Settings.of(Material.LEAVES).strength(0.2F).sounds(BlockSoundGroup.GRASS).nonOpaque().allowsSpawning(EnderInvasionBlocks::canSpawnOnLeaves).suffocates(EnderInvasionBlocks::never).blockVision(EnderInvasionBlocks::never));
  }
  private static Boolean canSpawnOnLeaves(BlockState state, BlockView world, BlockPos pos, EntityType<?> type) {
   return type == EntityType.OCELOT || type == EntityType.PARROT;

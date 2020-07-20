@@ -25,6 +25,8 @@ dependencies {
 
 	modImplementation "net.fabricmc.fabric-api:fabric-resource-loader-v0:${project.fabric_resource_loader_version}"
 	modImplementation "net.fabricmc.fabric-api:fabric-registry-sync-v0:${project.fabric_registry_sync_version}"
+	modImplementation "net.fabricmc.fabric-api:fabric-object-builder-api-v1:${project.fabric_object_builder_api_version}"
+	modImplementation "net.fabricmc.fabric-api:fabric-tool-attribute-api-v1:${project.fabric_tool_attribute_api_version}"
 
 	modImplementation "io.github.onyxstudios.Cardinal-Components-API:cardinal-components-base:${project.cardinal_components_version}"
 	modImplementation "io.github.onyxstudios.Cardinal-Components-API:cardinal-components-level:${project.cardinal_components_version}"
