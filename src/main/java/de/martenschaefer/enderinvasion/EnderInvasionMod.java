@@ -2,6 +2,7 @@ package de.martenschaefer.enderinvasion;
 
 import de.martenschaefer.enderinvasion.block.EnderInvasionBlocks;
 import de.martenschaefer.enderinvasion.block.EnderInvasionRecipes;
+import de.martenschaefer.enderinvasion.item.EnderInvasionItems;
 import nerdhub.cardinal.components.api.ComponentRegistry;
 import nerdhub.cardinal.components.api.ComponentType;
 import nerdhub.cardinal.components.api.event.LevelComponentCallback;
@@ -29,6 +30,7 @@ public class EnderInvasionMod implements ModInitializer {
   LevelComponentCallback.EVENT.register((levelProperties, components) -> components.put(STATE, new StateComponentImpl(State.PRE_ECHERITE)));
 
   EnderInvasionBlocks.registerBlocks();
+  EnderInvasionItems.registerItems();
   EnderInvasionRecipes.registerSpreadRecipes();
 
   //Loop over existing biomes
