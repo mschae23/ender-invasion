@@ -7,10 +7,10 @@
   ],
   "key": {
     "#": {
-      "item": "minecraft:echerite_ingot"
+      "item": "enderinvasion:echerite_ingot"
     }
   },
   "result": {
-    "item": "minecraft:echerite_block"
+    "item": "enderinvasion:echerite_block"
   }
 }
