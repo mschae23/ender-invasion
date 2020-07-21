@@ -45,7 +45,7 @@ public class EnderInvasionMod implements ModInitializer {
            Feature.ORE.configure(
                    new OreFeatureConfig(
                            OreFeatureConfig.Target.NETHERRACK,
-                           EnderInvasionBlocks.ECHERITE_ORE.getDefaultState(),
+                           EnderInvasionBlocks.ECHERITE_ORE.get().getDefaultState(),
                            4 //Ore vein size
                    )).createDecoratedFeature(
                    Decorator.COUNT_RANGE.configure(new RangeDecoratorConfig(

@@ -37,7 +37,7 @@ public class EnderInvasionGrassBlock extends GrassBlock {
 
   if (!canSurvive(world, state, pos)) {
 
-   world.setBlockState(pos, EnderInvasionBlocks.END_DIRT.getDefaultState());
+   world.setBlockState(pos, EnderInvasionBlocks.END_DIRT.get().getDefaultState());
   } else {
 
    if (EnderInvasionMod.STATE.get(world.getLevelProperties()).value() == State.ENDER_INVASION &&
@@ -46,7 +46,7 @@ public class EnderInvasionGrassBlock extends GrassBlock {
     for(int i = 0; i < 4; ++i) {
 
      BlockPos blockPos = pos.add(random.nextInt(3) - 1, random.nextInt(5) - 3, random.nextInt(3) - 1);
-     if (world.getBlockState(blockPos).isOf(EnderInvasionBlocks.END_DIRT) && canSurvive(world, this.getDefaultState(), blockPos)) {
+     if (world.getBlockState(blockPos).isOf(EnderInvasionBlocks.END_DIRT.get()) && canSurvive(world, this.getDefaultState(), blockPos)) {
       world.setBlockState(blockPos, this.getDefaultState().with(SNOWY, world.getBlockState(blockPos.up()).isOf(Blocks.SNOW)));
      }
     }
