@@ -27,6 +27,7 @@ import java.util.function.Function;
 public enum EnderInvasionBlocks {
 
  ECHERITE_ORE("echerite_ore", EcheriteOreBlock::new, FabricBlockSettings.of(new FabricMaterialBuilder(MaterialColor.NETHER).build(), MaterialColor.STONE).breakByTool(FabricToolTags.PICKAXES, 4).requiresTool().strength(30.0F, 3.0F).sounds(BlockSoundGroup.ANCIENT_DEBRIS), ItemGroup.MATERIALS, false),
+ ECHERITE_BLOCK("echerite_block", FabricBlockSettings.of(new FabricMaterialBuilder(MaterialColor.PURPLE).build()).requiresTool().breakByTool(FabricToolTags.PICKAXES, 4).strength(50f, 30f).sounds(BlockSoundGroup.NETHERITE), ItemGroup.BUILDING_BLOCKS, false),
  END_GRASS_BLOCK("end_grass_block", EnderInvasionGrassBlock::new, AbstractBlock.Settings.of(Material.SOLID_ORGANIC).ticksRandomly().strength(0.6F).sounds(BlockSoundGroup.GRASS), ItemGroup.BUILDING_BLOCKS, true),
  END_DIRT("end_dirt", FabricBlockSettings.of(Material.SOIL, MaterialColor.DIRT).strength(0.5F).sounds(BlockSoundGroup.GRAVEL), ItemGroup.BUILDING_BLOCKS, true),
  END_LOG("end_log", createLogSettings(MaterialColor.WOOD, MaterialColor.PURPLE), ItemGroup.BUILDING_BLOCKS, true),

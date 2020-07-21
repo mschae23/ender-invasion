@@ -1,9 +1,12 @@
 {
   "block.enderinvasion.echerite_ore": "Echeriterz",
+  "block.enderinvasion.echerite_block": "Echeritblock",
   "block.enderinvasion.end_grass_block": "Endgrasblock",
   "block.enderinvasion.end_dirt": "Enderde",
   "block.enderinvasion.end_log": "Endstamm",
   "block.enderinvasion.end_leaves": "Endlaub",
+
+  "item.enderinvasion.echerite_ingot": "Echeritbarren",
 
   "enderinvasion.start": "Die Ender-Invasion hat begonnen ..."
 }

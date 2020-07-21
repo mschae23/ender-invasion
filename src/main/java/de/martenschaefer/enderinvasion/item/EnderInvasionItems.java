@@ -1,4 +1,4 @@
-﻿package de.martenschaefer.enderinvasion.item;
+package de.martenschaefer.enderinvasion.item;
 
 import de.martenschaefer.enderinvasion.EnderInvasionMod;
 import net.minecraft.item.Item;
@@ -24,7 +24,7 @@ public enum EnderInvasionItems {
  EnderInvasionItems(String id, Function<Item.Settings, Item> item, Item.Settings settings) {
 
   this.item = Registry.register(Registry.ITEM, new Identifier(EnderInvasionMod.MOD_ID, id),
-   item.apply(settings));
+          item.apply(settings));
  }
  public Item get() {
 
