@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "enderinvasion:echerite_block"
+    }
+  ],
+  "result": {
+    "item": "enderinvasion:echerite_ingot",
+    "count": 9
+  }
+}
