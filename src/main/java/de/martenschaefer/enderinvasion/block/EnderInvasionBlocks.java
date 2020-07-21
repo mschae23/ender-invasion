@@ -30,7 +30,7 @@ public enum EnderInvasionBlocks {
  ECHERITE_BLOCK("echerite_block", FabricBlockSettings.of(new FabricMaterialBuilder(MaterialColor.PURPLE).build()).requiresTool().breakByTool(FabricToolTags.PICKAXES, 4).strength(50f, 30f).sounds(BlockSoundGroup.NETHERITE), ItemGroup.BUILDING_BLOCKS, false),
  END_GRASS_BLOCK("end_grass_block", EnderInvasionGrassBlock::new, AbstractBlock.Settings.of(Material.SOLID_ORGANIC).ticksRandomly().strength(0.6F).sounds(BlockSoundGroup.GRASS), ItemGroup.BUILDING_BLOCKS, true),
  END_DIRT("end_dirt", FabricBlockSettings.of(Material.SOIL, MaterialColor.DIRT).strength(0.5F).sounds(BlockSoundGroup.GRAVEL), ItemGroup.BUILDING_BLOCKS, true),
- END_LOG("end_log", createLogSettings(MaterialColor.WOOD, MaterialColor.PURPLE), ItemGroup.BUILDING_BLOCKS, true),
+ END_LOG("end_log", PillarBlock::new, createLogSettings(MaterialColor.WOOD, MaterialColor.PURPLE), ItemGroup.BUILDING_BLOCKS, true),
  END_LEAVES("end_leaves", LeavesBlock::new, createLeavesSettings(), ItemGroup.BUILDING_BLOCKS, true);
 
  private final Block block;
