@@ -16,7 +16,7 @@ import net.minecraft.world.WorldView;
 import net.minecraft.world.dimension.DimensionType;
 import java.util.Random;
 
-public class EnderInvasionUtil {
+public class EnderInvasion {
 
  public static void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
 
@@ -26,11 +26,11 @@ public class EnderInvasionUtil {
   switch(EnderInvasionMod.STATE.get(world.getLevelProperties()).value()) {
 
    case ENDER_INVASION:
-    EnderInvasionUtil.infect(state, world, pos, random);
-    EnderInvasionUtil.spread(state, world, pos, random);
+    EnderInvasion.infect(state, world, pos, random);
+    EnderInvasion.spread(state, world, pos, random);
     break;
    case POST_ENDER_DRAGON:
-    EnderInvasionUtil.purify(state, world, pos, random);
+    EnderInvasion.purify(state, world, pos, random);
     break;
   }
  }
@@ -38,14 +38,14 @@ public class EnderInvasionUtil {
 
   if(random.nextInt(16384) == 1)  {
 
-    EnderInvasionUtil.placeEnderInvasionPatch(world, random, pos);
+    EnderInvasion.placeEnderInvasionPatch(world, random, pos);
   }
  }
  public static void spread(BlockState state, ServerWorld world, BlockPos pos, Random random) {
 
   if(!SpreadableBlocksRegistry.SPREADABLE.test(state.getBlock())) return;
 
-  if (!EnderInvasionUtil.canSurvive(world, state, pos)) {
+  if (!EnderInvasion.canSurvive(world, state, pos)) {
 
    SpreadRecipe recipe = SpreadRecipeManager.WATER_PURIFICATION.getRecipe(state.getBlock());
    if(recipe == null) return;
@@ -72,7 +72,7 @@ public class EnderInvasionUtil {
   BlockState resultBlockState = recipe.convert(blockState);
   world.setBlockState(to, resultBlockState);
  }
- public static boolean canSurvive(WorldView world, BlockState state, BlockPos pos) {
+ public static boolean canSurvive(WorldView world, @SuppressWarnings("unused") BlockState state, BlockPos pos) {
 
   BlockPos posUp = pos.up();
   BlockState stateUp = world.getBlockState(posUp);

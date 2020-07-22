@@ -1,6 +1,6 @@
 package de.martenschaefer.enderinvasion.mixin;
 
-import de.martenschaefer.enderinvasion.EnderInvasionUtil;
+import de.martenschaefer.enderinvasion.EnderInvasion;
 import net.minecraft.block.BlockState;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
@@ -31,7 +31,7 @@ public abstract class ServerWorldMixin extends World {
  @Redirect(method = "tickChunk", at = @At(value = "INVOKE", target = "Lnet/minecraft/block/BlockState;randomTick(Lnet/minecraft/server/world/ServerWorld;Lnet/minecraft/util/math/BlockPos;Ljava/util/Random;)V"))
  public void redirectRandomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
 
-  EnderInvasionUtil.randomTick(state, world, pos, random);
+  EnderInvasion.randomTick(state, world, pos, random);
 
   if(state.hasRandomTicks()) state.randomTick(world, pos, random);
  }
