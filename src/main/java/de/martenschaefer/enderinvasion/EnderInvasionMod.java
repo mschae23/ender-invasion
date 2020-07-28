@@ -49,7 +49,7 @@ public class EnderInvasionMod implements ModInitializer {
                            OreFeatureConfig.Target.NETHERRACK,
                            EnderInvasionBlocks.ECHERITE_ORE.get().getDefaultState(),
                            4 //Ore vein size
-                   )).createDecoratedFeature(
+                   )).decorate(
                    Decorator.COUNT_RANGE.configure(new RangeDecoratorConfig(
                            10, //Number of veins per chunk
                            0, //Bottom Offset

@@ -3,14 +3,14 @@ package de.martenschaefer.enderinvasion.worldgen;
 import de.martenschaefer.enderinvasion.registry.SpreadRecipeManager;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.world.ServerWorldAccess;
+import net.minecraft.world.StructureWorldAccess;
 import net.minecraft.world.WorldAccess;
 import java.util.BitSet;
 import java.util.Random;
 
 public class EnderInvasionPlacer {
 
- public static boolean generate(ServerWorldAccess worldAccess, Random random, BlockPos blockPos, int patchSize) {
+ public static boolean generate(StructureWorldAccess worldAccess, Random random, BlockPos blockPos, int patchSize) {
   float f = random.nextFloat() * 3.1415927F;
   float g = (float)patchSize / 8.0F;
   int i = MathHelper.ceil(((float)patchSize / 16.0F * 2.0F + 1.0F) / 2.0F);
