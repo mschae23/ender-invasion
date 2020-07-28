@@ -21,7 +21,6 @@ public class EnderInvasion {
  public static void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
 
   if(world.getDimension() != DimensionType.getOverworldDimensionType()) return;
-  if(world.isClient()) return;
 
   switch(EnderInvasionMod.STATE.get(world.getLevelProperties()).value()) {
 
@@ -34,11 +33,11 @@ public class EnderInvasion {
     break;
   }
  }
- public static void infect(@SuppressWarnings("unused") BlockState state, ServerWorld world, BlockPos pos, Random random) {
+ public static void infect(BlockState state, ServerWorld world, BlockPos pos, Random random) {
 
-  if(random.nextInt(16384) == 1)  {
+  if(!state.isAir() && random.nextInt(65536) == 0)  {
 
-    EnderInvasion.placeEnderInvasionPatch(world, random, pos);
+   EnderInvasionPlacer.generate(world, random, pos, 30);
   }
  }
  public static void spread(BlockState state, ServerWorld world, BlockPos pos, Random random) {
@@ -84,10 +83,6 @@ public class EnderInvasion {
    if(world.getFluidState(pos2).isIn(FluidTags.WATER)) return false;
   }
   return true;
- }
- public static void placeEnderInvasionPatch(ServerWorld world, Random random, BlockPos blockPos) {
-
-  EnderInvasionPlacer.generate(world, random, blockPos, 30);
  }
  public static void purify(BlockState state, ServerWorld world, BlockPos pos, @SuppressWarnings("unused") Random random) {
 
