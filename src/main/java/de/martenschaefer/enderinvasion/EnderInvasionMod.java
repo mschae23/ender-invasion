@@ -9,7 +9,7 @@ import nerdhub.cardinal.components.api.event.LevelComponentCallback;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.registry.RegistryEntryAddedCallback;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
+import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.decorator.Decorator;
@@ -33,11 +33,9 @@ public class EnderInvasionMod implements ModInitializer {
   EnderInvasionItems.registerItems();
   EnderInvasionRecipes.registerSpreadRecipes();
 
-  //Loop over existing biomes
-  Registry.BIOME.forEach(this::handleBiome);
+  BuiltinRegistries.BIOME.forEach(this::handleBiome);
 
-  //Listen for other biomes being registered
-  RegistryEntryAddedCallback.event(Registry.BIOME).register((i, identifier, biome) -> handleBiome(biome));
+  RegistryEntryAddedCallback.event(BuiltinRegistries.BIOME).register((i, identifier, biome) -> handleBiome(biome));
  }
  private void handleBiome(Biome biome) {
 
@@ -46,16 +44,15 @@ public class EnderInvasionMod implements ModInitializer {
            GenerationStep.Feature.UNDERGROUND_DECORATION,
            Feature.ORE.configure(
                    new OreFeatureConfig(
-                           OreFeatureConfig.Target.NETHERRACK,
+                           OreFeatureConfig.Rules.NETHERRACK,
                            EnderInvasionBlocks.ECHERITE_ORE.get().getDefaultState(),
                            4 //Ore vein size
                    )).decorate(
-                   Decorator.COUNT_RANGE.configure(new RangeDecoratorConfig(
-                           10, //Number of veins per chunk
+                   Decorator.RANGE.configure(new RangeDecoratorConfig(
                            0, //Bottom Offset
                            3, //Min y level
                            125 //Max y level
-                   ))));
+                   )).spreadHorizontally()));
   }
  }
 }
