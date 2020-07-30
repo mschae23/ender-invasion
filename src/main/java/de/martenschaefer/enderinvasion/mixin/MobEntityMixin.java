@@ -2,7 +2,7 @@ package de.martenschaefer.enderinvasion.mixin;
 
 import de.martenschaefer.enderinvasion.EnderInvasionMod;
 import de.martenschaefer.enderinvasion.State;
-import net.minecraft.block.AbstractBlock;
+import net.minecraft.block.BlockState;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.mob.MobEntity;
@@ -14,7 +14,6 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
-@SuppressWarnings("unused")
 @Mixin(MobEntity.class)
 public abstract class MobEntityMixin extends LivingEntity {
 
@@ -22,8 +21,8 @@ public abstract class MobEntityMixin extends LivingEntity {
 
   super(entityType, world);
  }
- @Redirect(method = "canMobSpawn", at = @At(value = "INVOKE", target = "Lnet/minecraft/block/AbstractBlock$AbstractBlockState;allowsSpawning(Lnet/minecraft/world/BlockView;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/entity/EntityType;)Z"))
- private static boolean preventEndermanSpawn(AbstractBlock.AbstractBlockState state, BlockView world, BlockPos pos, EntityType<?> type) {
+ @Redirect(method = "canMobSpawn", at = @At(value = "INVOKE", target = "Lnet/minecraft/block/BlockState;allowsSpawning(Lnet/minecraft/world/BlockView;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/entity/EntityType;)Z"))
+ private static boolean preventEndermanSpawn(BlockState state, BlockView world, BlockPos pos, EntityType<?> type) {
 
   if(type == EntityType.ENDERMAN) {
 
