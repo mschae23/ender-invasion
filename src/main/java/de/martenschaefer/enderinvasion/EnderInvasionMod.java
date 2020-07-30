@@ -33,6 +33,8 @@ public class EnderInvasionMod implements ModInitializer {
   EnderInvasionItems.registerItems();
   EnderInvasionRecipes.registerSpreadRecipes();
 
+  EnderInvasionHelper.changeEnderPearlTrade();
+
   BuiltinRegistries.BIOME.forEach(this::handleBiome);
 
   RegistryEntryAddedCallback.event(BuiltinRegistries.BIOME).register((i, identifier, biome) -> handleBiome(biome));
