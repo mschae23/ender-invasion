@@ -2,18 +2,17 @@ package de.martenschaefer.enderinvasion.mixin;
 
 import de.martenschaefer.enderinvasion.EnderInvasionMod;
 import de.martenschaefer.enderinvasion.State;
+import net.minecraft.block.AbstractBlock;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-import java.util.Random;
+import org.spongepowered.asm.mixin.injection.Redirect;
 
 @SuppressWarnings("unused")
 @Mixin(MobEntity.class)
@@ -23,15 +22,16 @@ public abstract class MobEntityMixin extends LivingEntity {
 
   super(entityType, world);
  }
- @Inject(method = "canMobSpawn", at = @At("RETURN"), cancellable = true)
- private static void canMobSpawn(EntityType<? extends MobEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random, CallbackInfoReturnable cir) {
+ @Redirect(method = "canMobSpawn", at = @At(value = "INVOKE", target = "Lnet/minecraft/block/AbstractBlock$AbstractBlockState;allowsSpawning(Lnet/minecraft/world/BlockView;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/entity/EntityType;)Z"))
+ private static boolean preventEndermanSpawn(AbstractBlock.AbstractBlockState state, BlockView world, BlockPos pos, EntityType<?> type) {
 
   if(type == EntityType.ENDERMAN) {
 
-   if(EnderInvasionMod.STATE.get(world.getLevelProperties()).value() == State.PRE_ECHERITE) {
+   if(EnderInvasionMod.STATE.get(((WorldAccess) world).getLevelProperties()).value() == State.PRE_ECHERITE) {
 
-    cir.setReturnValue(false);
+    return false;
    }
   }
+  return state.allowsSpawning(world, pos, type);
  }
 }
