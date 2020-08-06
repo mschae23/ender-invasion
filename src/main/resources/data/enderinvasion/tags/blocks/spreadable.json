@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:end_stone",
+    "enderinvasion:end_grass_block",
+    "enderinvasion:end_dirt",
+    "enderinvasion:end_log",
+    "enderinvasion:end_leaves"
+  ]
+}

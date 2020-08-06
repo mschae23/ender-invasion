@@ -1,8 +1,8 @@
 package de.martenschaefer.enderinvasion;
 
+import de.martenschaefer.enderinvasion.registry.EnderInvasionTags;
 import de.martenschaefer.enderinvasion.registry.SpreadRecipe;
 import de.martenschaefer.enderinvasion.registry.SpreadRecipeManager;
-import de.martenschaefer.enderinvasion.registry.SpreadableBlocksRegistry;
 import de.martenschaefer.enderinvasion.worldgen.EnderInvasionPlacer;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -42,7 +42,7 @@ public class EnderInvasion {
  }
  public static void spread(BlockState state, ServerWorld world, BlockPos pos, Random random) {
 
-  if(!SpreadableBlocksRegistry.SPREADABLE.test(state.getBlock())) return;
+  if(!EnderInvasionTags.SPREADABLE.contains(state.getBlock())) return;
 
   if (!EnderInvasion.canSurvive(world, state, pos)) {
 

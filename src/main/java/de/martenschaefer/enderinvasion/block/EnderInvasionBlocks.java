@@ -1,7 +1,6 @@
 package de.martenschaefer.enderinvasion.block;
 
 import de.martenschaefer.enderinvasion.EnderInvasionMod;
-import de.martenschaefer.enderinvasion.registry.SpreadableBlocksRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricMaterialBuilder;
 import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
@@ -26,31 +25,30 @@ import java.util.function.Function;
 
 public enum EnderInvasionBlocks {
 
- ECHERITE_ORE("echerite_ore", EcheriteOreBlock::new, FabricBlockSettings.of(new FabricMaterialBuilder(MaterialColor.NETHER).build(), MaterialColor.STONE).breakByTool(FabricToolTags.PICKAXES, 4).requiresTool().strength(30.0F, 3.0F).sounds(BlockSoundGroup.ANCIENT_DEBRIS), ItemGroup.MATERIALS, false),
- ECHERITE_BLOCK("echerite_block", FabricBlockSettings.of(new FabricMaterialBuilder(MaterialColor.PURPLE).build()).requiresTool().breakByTool(FabricToolTags.PICKAXES, 4).strength(50f, 30f).sounds(BlockSoundGroup.NETHERITE), ItemGroup.BUILDING_BLOCKS, false),
- END_GRASS_BLOCK("end_grass_block", EnderInvasionGrassBlock::new, AbstractBlock.Settings.of(Material.SOLID_ORGANIC).ticksRandomly().strength(0.6F).sounds(BlockSoundGroup.GRASS), ItemGroup.BUILDING_BLOCKS, true),
- END_DIRT("end_dirt", FabricBlockSettings.of(Material.SOIL, MaterialColor.DIRT).strength(0.5F).sounds(BlockSoundGroup.GRAVEL), ItemGroup.BUILDING_BLOCKS, true),
- END_LOG("end_log", PillarBlock::new, createLogSettings(MaterialColor.WOOD, MaterialColor.PURPLE), ItemGroup.BUILDING_BLOCKS, true),
- END_LEAVES("end_leaves", LeavesBlock::new, createLeavesSettings(), ItemGroup.BUILDING_BLOCKS, true);
+ ECHERITE_ORE("echerite_ore", EcheriteOreBlock::new, FabricBlockSettings.of(new FabricMaterialBuilder(MaterialColor.NETHER).build(), MaterialColor.STONE).breakByTool(FabricToolTags.PICKAXES, 4).requiresTool().strength(30.0F, 3.0F).sounds(BlockSoundGroup.ANCIENT_DEBRIS), ItemGroup.MATERIALS),
+ ECHERITE_BLOCK("echerite_block", FabricBlockSettings.of(new FabricMaterialBuilder(MaterialColor.PURPLE).build()).requiresTool().breakByTool(FabricToolTags.PICKAXES, 4).strength(50f, 30f).sounds(BlockSoundGroup.NETHERITE), ItemGroup.BUILDING_BLOCKS),
+ END_GRASS_BLOCK("end_grass_block", EnderInvasionGrassBlock::new, AbstractBlock.Settings.of(Material.SOLID_ORGANIC).ticksRandomly().strength(0.6F).sounds(BlockSoundGroup.GRASS), ItemGroup.BUILDING_BLOCKS),
+ END_DIRT("end_dirt", FabricBlockSettings.of(Material.SOIL, MaterialColor.DIRT).strength(0.5F).sounds(BlockSoundGroup.GRAVEL), ItemGroup.BUILDING_BLOCKS),
+ END_LOG("end_log", PillarBlock::new, createLogSettings(MaterialColor.WOOD, MaterialColor.PURPLE), ItemGroup.BUILDING_BLOCKS),
+ END_LEAVES("end_leaves", LeavesBlock::new, createLeavesSettings(), ItemGroup.BUILDING_BLOCKS);
 
  private final Block block;
  private final Item item;
 
- EnderInvasionBlocks(String id, AbstractBlock.Settings settings, ItemGroup group, boolean spreads) {
+ EnderInvasionBlocks(String id, AbstractBlock.Settings settings, ItemGroup group) {
 
-  this(id, Block::new, settings, group, spreads);
+  this(id, Block::new, settings, group);
  }
- EnderInvasionBlocks(String id, Function<AbstractBlock.Settings, Block> block, AbstractBlock.Settings settings, ItemGroup group, boolean spreads) {
+ EnderInvasionBlocks(String id, Function<AbstractBlock.Settings, Block> block, AbstractBlock.Settings settings, ItemGroup group) {
 
-  this(id, block, settings, new Item.Settings().group(group), spreads);
+  this(id, block, settings, new Item.Settings().group(group));
  }
- EnderInvasionBlocks(String id, Function<AbstractBlock.Settings, Block> block, AbstractBlock.Settings settings, Item.Settings itemSettings, boolean spreads) {
+ EnderInvasionBlocks(String id, Function<AbstractBlock.Settings, Block> block, AbstractBlock.Settings settings, Item.Settings itemSettings) {
 
   this.block = Registry.register(Registry.BLOCK, new Identifier(EnderInvasionMod.MOD_ID, id),
    block.apply(settings));
   this.item = Registry.register(Registry.ITEM, new Identifier(EnderInvasionMod.MOD_ID, id),
    new BlockItem(this.block, itemSettings));
-  if(spreads) SpreadableBlocksRegistry.SPREADABLE.addBlock(this.block);
  }
  public Block get() {
 

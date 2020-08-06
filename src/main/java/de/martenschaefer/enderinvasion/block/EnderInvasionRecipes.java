@@ -1,7 +1,6 @@
 package de.martenschaefer.enderinvasion.block;
 
 import de.martenschaefer.enderinvasion.EnderInvasionMod;
-import de.martenschaefer.enderinvasion.registry.SpreadableBlocksRegistry;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.LeavesBlock;
 import net.minecraft.block.PillarBlock;
@@ -50,7 +49,5 @@ public class EnderInvasionRecipes {
           state -> Blocks.OAK_LEAVES.getDefaultState()
                   .with(LeavesBlock.DISTANCE, state.get(LeavesBlock.DISTANCE))
                   .with(LeavesBlock.PERSISTENT, state.get(LeavesBlock.PERSISTENT)));
-
-  SpreadableBlocksRegistry.SPREADABLE.addBlock(Blocks.END_STONE);
  }
 }
